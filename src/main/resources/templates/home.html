@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Japan CoronaVirus Tracker App.</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  </head>
+
+  <body>
+
+  <div class="container">
+    <h1 class="pt-4">Japan CoronaVirus Tracker App.</h1>
+    <p>This app lists the current number of the cases reported in Japan...</p>
+    
+    <div class="jumbotron pt-4 pb-3">
+	  <h1 class="display-4" th:text="${totalCases}"></h1>
+	  <p class="lead">Total cases in Japan reported as of today</p>
+	  <hr class="my-4">
+  	  <span class="font-weight-bold">Total Recovery: </span>
+  	  <span th:text="${totalRecovery}"></span><br />
+  	  <span class="font-weight-bold">Total Death: </span>
+  	  <span th:text="${totalDeath}"></span>
+	</div>
+    
+    <table class="table table-hover pb-10">
+	    <thead class="thead-dark">
+	      <tr>
+	        <th>Pref.</th>
+	        <th>Total Number</th>
+	        <th>Current Patients</th>
+	        <th>Total Recovery</th>
+	        <th>Total Death</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr th:each="pd : ${prefectureData}">
+	        <td class="font-weight-bold" th:text="${pd.name}"></td>
+	        <td th:text="${pd.totalPatients}">0</td>
+	        <td th:text="${pd.currentPatients}">0</td>
+	        <td th:text="${pd.totalRecovery}">0</td>
+	        <td th:text="${pd.totalDeath}">0</td>
+	      </tr>
+	    </tbody>
+	</table>
+	
+	<h2 class="p-3 mb-4 bg-warning text-dark shadow rounded text-center">#STAY HOME</h2>
+	
+	<div class="text-right mb-3">
+	  <button type="button" class="btn btn-info mb-3" style="width: 100px" onclick="location.href='https://github.com/code4sabae/covid19/blob/master/data/covid19japan.csv'">Source</button>
+	</div>
+	
+  </div>  
+  </body>
+
+</html>
