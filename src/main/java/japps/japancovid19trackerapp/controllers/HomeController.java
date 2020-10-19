@@ -21,12 +21,14 @@ public class HomeController {
 		List<PrefectureData> allPrefectures = coronaVirusDataService.getAllPrefectures(); //データのリスト(全件)
 		
 		int totalCases = allPrefectures.stream().mapToInt(prefecture -> prefecture.getTotalPatients()).sum(); //国内感染者数の累計
+		int totalCurrentPatients = allPrefectures.stream().mapToInt(prefecture -> prefecture.getCurrentPatients()).sum(); //現在の国内感染者の累計
 		int totalRecovery = allPrefectures.stream().mapToInt(prefecture -> prefecture.getTotalRecovery()).sum(); //国内回復者数の累計
 		int totalDeath = allPrefectures.stream().mapToInt(prefecture -> prefecture.getTotalDeath()).sum(); //国内死者数の累計
 		
 		//viewに値を渡す
 		model.addAttribute("prefectureData", allPrefectures);
 		model.addAttribute("totalCases", totalCases);
+		model.addAttribute("totalCurrentPatients", totalCurrentPatients);
 		model.addAttribute("totalRecovery", totalRecovery);
 		model.addAttribute("totalDeath", totalDeath);
 		

@@ -11,17 +11,27 @@
   <body>
 
   <div class="container">
-    <h1 class="pt-4">Japan CoronaVirus Tracker App.</h1>
+    <h1 class="pt-4">Japan COVID-19 Tracker App.</h1>
     <p>This app lists the current number of the cases reported in Japan...</p>
     
-    <div class="jumbotron pt-4 pb-3">
+    <div class="jumbotron pt-3 pb-3">
 	  <h1 class="display-4" th:text="${totalCases}"></h1>
 	  <p class="lead">Total cases in Japan reported as of today</p>
 	  <hr class="my-4">
-  	  <span class="font-weight-bold">Total Recovery: </span>
-  	  <span th:text="${totalRecovery}"></span><br />
-  	  <span class="font-weight-bold">Total Death: </span>
-  	  <span th:text="${totalDeath}"></span>
+	  <ul class="list-group d-inline-flex">
+		<li class="d-flex justify-content-between align-items-center font-weight-bold">
+			Total Current Patients: 
+		  <span class="badge badge-primary badge-pill ml-4" th:text="${totalCurrentPatients}"></span>
+		</li>
+		<li class="d-flex justify-content-between align-items-center font-weight-bold">
+			Total Recovery: 
+		  <span class="badge badge-primary badge-pill" th:text="${totalRecovery}"></span>
+		</li>
+		<li class="d-flex justify-content-between align-items-center font-weight-bold">
+			Total Death: 
+		  <span class="badge badge-primary badge-pill" th:text="${totalDeath}"></span>
+		</li>
+	  </ul>
 	</div>
     
     <table class="table table-hover pb-10">
